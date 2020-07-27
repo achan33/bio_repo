@@ -4,7 +4,6 @@
 Program will open file stores query sequence ID  and query length (store in dict/list)
 
 '''
-
 import re                                                                                                
 
 def grab_id_length(f):     
@@ -21,21 +20,16 @@ def grab_id_length(f):
                                 query_length = line
                         if line.startswith("Query="):
                                 query_id = line
-
-
                 print(query_id + query_length)
 
 def main():
 
         f = open("example_blast.txt" , "r+")
         #print out on commandline with QueryID and QueryLength
-        #grab_id_length(f)
-
+        
         #file parsing sort first ten with accession between first pipes ||
         #Format : Alignment #1: Accession = ref|XM_005094338.1| (Length = 2377, Score = 1098)
         #use regex
-
-
         grab_id_length(f)
 
         ascn_list = []
@@ -58,12 +52,9 @@ def main():
                                 score = info[0]
                                 score_list.append(score.strip())
                         continue
-
-
-
-
                 #print only ten out
         for x in range(10):
                 print("Alignment #{0}: Acession = {1} ({2} , {3})".format(x+1,ascn_list[x],length_list[x],score_list[x]))
+
 if __name__ =='__main__':
         main()
